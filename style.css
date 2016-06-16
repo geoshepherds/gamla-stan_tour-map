@@ -1,0 +1,433 @@
+body {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+}
+
+/* map styles */
+#map {
+    width: 200%;
+    height: 100%;
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    left:-50%;
+    -webkit-transition: opacity 250ms;
+    transition:opacity 250ms;
+}
+
+/* style the position of the 'pane' to be fixed and the 'map' to be absolute */
+#pane {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 66.66%;
+}
+
+/* style for the article and sections */ 
+article {
+    max-width: 300px;
+    width: 33.33%;
+    min-width: 280px;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 33.33%;
+    display: block;
+    z-index: 999;
+    height: 600px;
+    overflow: hidden;
+    
+}
+
+section {
+    opacity: 0;
+}
+
+section.active {
+    height: 295px;
+    background: #3c4b61;
+    color: #eee;
+    display: block;
+    padding: 60px 40px 20px 40px;
+    margin-left: 40px;
+    margin-top: 50px;
+    position: relative; 
+    opacity: 1;
+}
+
+section > img {
+    padding: 0 15px;
+    position: absolute;
+    top: -80px;
+    display: none;
+}
+
+section.active > img {
+    display: block;
+}
+
+h1#tourHeader, h2#tourHeader, p#tourText {
+    opacity: 0;
+}
+
+section.visible > h1#tourHeader, section.visible > h2#tourHeader, section.visible > p#tourText {
+    opacity: 1;
+    -webkit-transition: opacity .75s ease-in-out;
+    transition: opacity .75s ease-in-out;
+}
+
+#title > #tourHeader {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+#nextBtn, #prevBtn, #toStartBtn {
+    cursor: pointer;
+    -webkit-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    opacity: 0.6;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    margin: 10px;
+}
+
+#toStartBtn {
+    bottom: 12px;
+}
+
+#nextBtn, #birgerJarl > div#prevBtn {
+    left: 30px;
+}
+
+#prevBtn, #toStartBtn {
+    left: 85px;
+}
+
+
+#nextBtn:hover, #prevBtn:hover, #toStartBtn:hover {
+    -webkit-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    opacity: 1;
+}
+
+#nextBtn > i.fa-3x {
+    width: 50px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    text-align: center;
+}
+#nextBtn > i.fa-2x, #prevBtn > i.fa-2x {
+    width: 32px;
+    border: 2px solid #fff;
+    border-radius: 32px;
+    text-align: center;
+}
+
+/* image for the section that matches the map markers */
+#poiImage {
+    width: 125px;
+    height: 125px;
+    background-image: url(media/image_collection.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -60px;
+    margin: 0 25px;
+}
+
+#gamlaStan > #poiImage {background-position: -158px -230px;display: none;}
+#tyskaKyrkan > #poiImage {background-position: -287px -230px;display: none;}
+#martenTrotzig > #poiImage { background-position: -418px -230px;display: none;}
+#jarntorget > #poiImage {background-position: -550px -230px;display: none;}
+#kopmantorget > #poiImage {background-position: -677px -230px; display: none;}
+#jarnpojke > #poiImage {background-position: -807px -230px;display: none;}
+#stockholmPalace > #poiImage {background-position: -937px -230px;display: none;}
+#storKyrkan > #poiImage {background-position: -1067px -230px; display: none;}
+#stortorget > #poiImage {background-position: -1847px -230px;display: none;}
+#nobelMuseum > #poiImage {background-position: -1197px -230px;display: none;}
+#prastgatan > #poiImage {background-position: -1327px -230px;display: none;}
+#riddarhuspalatset > #poiImage {background-position: -1457px -230px;display: none;}
+#riddarholmsKyrkan > #poiImage {background-position: -1586px -230px;display: none;}
+#birgerJarl > #poiImage {background-position: -1716px -230px;display: none;}
+
+#gamlaStan.active > #poiImage, #tyskaKyrkan.active > #poiImage, #martenTrotzig.active > #poiImage, #jarntorget.active > #poiImage, #kopmantorget.active > #poiImage, #jarnpojke.active > #poiImage, #stockholmPalace.active > #poiImage, #storKyrkan.active > #poiImage, #stortorget.active > #poiImage, #nobelMuseum.active > #poiImage, #prastgatan.active > #poiImage, #riddarhuspalatset.active > #poiImage, #riddarholmsKyrkan.active > #poiImage, #birgerJarl.active > #poiImage    {
+    display: block;
+}
+
+section.active#birgerJarl {
+    padding: 60px 20px 20px 40px;
+}
+
+/* style for the markers on the map */
+.poi {
+    width: 78px;
+    height: 78px;
+    margin: -60px 0 0 -60px;
+    background-image: url(media/image_collection.png);
+    background-repeat: no-repeat;
+    position: absolute;        
+}
+
+/* set background position for all the POI markers */
+.poi.gamlaStan.XS {background-position: -191px 20px; }
+.poi.gamlaStan {background-position: -191px -65px; }
+.poi.gamlaStan.active {background-position: -180px -145px;}
+.poi.tyskaKyrkan.XS {background-position: -323px 20px; }
+.poi.tyskaKyrkan {background-position: -323px -65px;}
+.poi.tyskaKyrkan.active {background-position: -312px -145px;}
+.poi.martenTrotzig.XS {background-position: -450px 20px; }
+.poi.martenTrotzig {background-position: -450px -65px;}
+.poi.martenTrotzig.active {background-position: -438px -145px;}
+.poi.jarntorget.XS {background-position: -582px 20px; }
+.poi.jarntorget {background-position: -582px -65px;}
+.poi.jarntorget.active {background-position: -571px -145px;}
+.poi.kopmantorget.XS {background-position: -191px 20px; }
+.poi.kopmantorget {background-position: -711px -65px;}
+.poi.kopmantorget.active {background-position: -700px -145px;}
+.poi.jarnpojke.XS {background-position: -842px 20px; }
+.poi.jarnpojke {background-position: -842px -65px;}
+.poi.jarnpojke.active {background-position: -831px -145px;}
+.poi.stockholmPalace.XS {background-position: -971px 20px; }
+.poi.stockholmPalace {background-position: -971px -65px;}
+.poi.stockholmPalace.active {background-position: -960px -145px;}
+.poi.storKyrkan.XS {background-position: -1101px 20px; }
+.poi.storKyrkan {background-position: -1101px -65px;}
+.poi.storKyrkan.active {background-position: -1090px -145px;}
+.poi.stortorget.XS {background-position: -1882px 20px; }
+.poi.stortorget {background-position: -1882px -65px;}
+.poi.stortorget.active {background-position: -1871px -145px;}
+.poi.nobelMuseum.XS {background-position: -1231px 20px; }
+.poi.nobelMuseum {background-position: -1231px -65px;}
+.poi.nobelMuseum.active {background-position: -1220px -145px;}
+.poi.prastgatan.XS {background-position: -1362px 20px; }
+.poi.prastgatan {background-position: -1362px -65px;}
+.poi.prastgatan.active {background-position: -1351px -145px;}
+.poi.riddarhuspalatset.XS {background-position: -1491px 20px; }
+.poi.riddarhuspalatset {background-position: -1491px -65px;}
+.poi.riddarhuspalatset.active {background-position: -1480px -145px;}
+.poi.riddarholmsKyrkan.XS {background-position: -1620px 20px; }
+.poi.riddarholmsKyrkan {background-position: -1620px -65px;}
+.poi.riddarholmsKyrkan.active {background-position: -1609px -145px;}
+.poi.birgerJarl.XS {background-position: -1750px 20px; }
+.poi.birgerJarl {background-position: -1750px -65px;}
+.poi.birgerJarl.active {background-position: -1739px -145px;}
+
+/* route */
+path {
+    fill: transparent;
+    opacity: 0.8;
+    stroke: #fecc00;
+    stroke-width: 4px;
+    position: relative;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* media rules for screen widths */
+
+@media (min-width: 480px) and (max-width: 955px) {
+    
+    #map {
+        left: -45%;
+        top: 40px;
+    }
+    
+    #pane {
+        width: 100%;
+    }
+    
+    article {
+        width: 100%;
+        max-width: 955px;
+        padding-top: 0;
+    }
+    
+    section.active, section.active#birgerJarl {
+        height: 150px;
+        margin-top: 0px;
+        padding: 20px 40px;
+        margin-left: 0;
+    }
+    
+    section > img, #poiImage {
+        top: 10px;
+        left: 5px;
+    }
+    
+    section.visible > h1#tourHeader, section.visible > h2#tourHeader, section.visible > p#tourText {
+        padding-left: 150px;
+        
+    }
+    
+    #title > h1#tourHeader, #title > p#tourText {
+        padding-left: 0;
+        max-width: 250px;
+    }
+    
+    #title > #nextBtn {
+        left: auto;
+        right: 40px;
+    }
+    
+    h2#tourHeader {
+        font-size: 1.2em;
+        margin-top: 0;
+    }
+    
+    p#tourText {
+        font-size: 0.8em;
+    }
+    
+    #nextBtn, #prevBtn, #toStartBtn {
+        -webkit-transition: none;
+        transition: none;
+        opacity: 1;
+        left: auto;
+    }
+    
+    #nextBtn, #birgerJarl > div#prevBtn {
+        right: 85px;
+        left: auto;
+    }
+    
+    #prevBtn {
+        right: 30px;
+        left: auto;
+    }   
+    
+    #toStartBtn {
+        right: 10px;
+        left: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    
+    #map {
+        left: -45%;
+        top: 80px;
+    }
+    
+    #pane {
+        width: 100%;
+    }
+    
+    article {
+        width: 100%;
+        max-width: 955px;
+        padding-top: 0;
+    }
+    
+    section.active, section.active#birgerJarl {
+        height: 150px;
+        margin-top: 0px;
+        padding: 20px 40px;
+        margin-left: 0;
+    }
+    
+    section.active > img, #poiImage, #gamlaStan.active > #poiImage, #tyskaKyrkan.active > #poiImage, #martenTrotzig.active > #poiImage, #jarntorget.active > #poiImage, #kopmantorget.active > #poiImage, #jarnpojke.active > #poiImage, #stockholmPalace.active > #poiImage, #storKyrkan.active > #poiImage, #stortorget.active > #poiImage, #nobelMuseum.active > #poiImage, #prastgatan.active > #poiImage, #riddarhuspalatset.active > #poiImage, #riddarholmsKyrkan.active > #poiImage, #birgerJarl.active > #poiImage {
+        top: 10px;
+        left: 5px;
+        width: 100px;
+        height: 100px;
+        display: none;
+    }
+    
+    section.visible > h1#tourHeader, section.visible > h2#tourHeader, section.visible > p#tourText {
+        padding-left: 0px;
+        
+    }
+    
+    #title > h1#tourHeader, #title > p#tourText {
+        padding-left: 0;
+        max-width: 140px;
+    }
+    
+    #title > h1#tourHeader {
+        font-size: 16px;
+    }
+    
+    #title > #nextBtn {
+        left: auto;
+        right: 40px;
+    }
+    
+    h2#tourHeader {
+        font-size: 1em;
+        margin-top: 0;
+    }
+    
+    p#tourText {
+        font-size: 0.7em;
+    }
+    
+    #nextBtn, #prevBtn, #toStartBtn {
+        -webkit-transition: none;
+        transition: none;
+        opacity: 1;
+        left: auto;
+    }
+    
+    #title > #nextBtn, #toStartBtn {
+        right: 30px;
+        left: auto;
+    }
+    
+    #nextBtn {
+        right: 40px;
+        left: auto;
+    }
+    
+    #prevBtn, #birgerJarl > div#prevBtn {
+        right: 90px;
+        left: auto;
+    }
+    
+    #toStartBtn > img, #nextBtn > img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

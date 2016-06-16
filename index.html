@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!---
+License: This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
+-->
+<meta charset=utf-8 />
+<meta name="author" content="Geoshepherds" /> 
+<meta name="description" content="Interactive map tour of Gamla Stan for the 'Free Walking Tours Stockholm' team" />
+    
+<title>FREE WALKING TOUR STOCKHOLM</title>
+<link rel="stylesheet" href="leaflet.css" />
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
+</head>
+<body>
+
+<div id="wrapper">
+<div id='pane'><div id='map'></div></div>
+
+<article id='tourPanel'>
+    <section class='active'></section>
+    <section id='title'>
+        <h1 id="tourHeader">FREE WALKING TOUR STOCKHOLM</h1>
+        <p id="tourText">Click the icon below to begin the interactive tour</p>
+        <div id="nextBtn"><img src="media/tourstarticon.png" height="90px" width="90px"></div>
+    </section>
+    <section id='cover'>
+        <img src="media/tourOverviewLarge.png" alt="Gamla Stan Tour Overview">
+        <h2 id="tourHeader">Stockholm Old Town Tour</h2>
+        <p id="tourText">Explore 'Gamla Stan' interactively and discover what the tour has in store for you.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+    </section>
+    <section id='gamlaStan'>
+        <h2 id="tourHeader">Tour Start: T Gamla Stan</h2>
+        <p id="tourText">Start: 1pm outside the metro station Gamla Stan.</p>
+        <p id="tourText">Duration: 100-110 min.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='tyskaKyrkan'>        
+        <h2 id="tourHeader">The German Church</h2>
+        <p id="tourText">Founded in 1571 the church is located in a neighbourhood that was dominated by Germans in the Middle Ages.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>        
+    </section>
+    <section id='martenTrotzig'>
+        <h2 id="tourHeader">Alley of Mårten Trotzig</h2>
+        <p id="tourText">The narrowest street in Stockholm at 90cm across (35 inches).</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='jarntorget'>
+        <h2 id="tourHeader">The Iron Square</h2>
+        <p id="tourText">The second oldest square in Stockholm dating back to the 1300's.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='kopmantorget'>
+        <h2 id="tourHeader">Merchant's Square</h2>
+        <p id="tourText">It was a thoroughfare between two main squares and contains a copy of the sculpture "Sankt Göran och draken".</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='jarnpojke'>
+        <h2 id="tourHeader">Iron Boy</h2>
+        <p id="tourText">Known in English as the "little boy who looks at the moon". Fifteen centimetres high it is the smallest public statue in Stockholm.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='stockholmPalace'>
+        <h2 id="tourHeader">The Royal Palace</h2>
+        <p id="tourText">Official residence and major royal palace of the Swedish monarch.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='storKyrkan'>
+        <h2 id="tourHeader">The Great Church</h2>
+        <p id="tourText">It is the oldest church in Gamla Stan and was founded in the 13th century.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='stortorget'>
+        <h2 id="tourHeader">The Big Square</h2>
+        <p id="tourText">The oldest square in Stockholm and forms the heart of Gamla Stan.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='nobelMuseum'>
+        <h2 id="tourHeader">The Nobel Museum</h2>
+        <p id="tourText">Is a museum devoted to circulating information on the Nobel Prize and the founder of the prize Alfred Nobel.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='prastgatan'>
+        <h2 id="tourHeader">The Priest's Street</h2>
+        <p id="tourText">Home to the "Rune Stone" believed to date back to the 1000's being about 200 years older than the city.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='riddarhuspalatset'>
+        <h2 id="tourHeader">The House of Nobility</h2>
+        <p id="tourText">Originally used by the aristocracy for meetings of parliament.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='riddarholmsKyrkan'>
+        <h2 id="tourHeader">Riddarholm Church</h2>
+        <p id="tourText">This is the burial church of the Swedish monarchs and is one of the oldest churches in Stockholm.</p>
+        <div id="nextBtn"><i class="fa fa-angle-down fa-2x"></i></div>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <div id="poiImage"></div>
+    </section>
+    <section id='birgerJarl'>
+        <h2 id="tourHeader">Birger Jarls Square</h2>
+        <p id="tourText">The square was renamed after the traditionally attributed founder of Stockholm.</p>
+        <p id="tourText">Tour Finish</p>
+        <div id="prevBtn"><i class="fa fa-angle-up fa-2x"></i></div>
+        <p id="toStartBtn"><img src="media/tourstarticon.png" height="70px" width="70px"></p>
+        <div id="poiImage"></div>
+    </section>
+</article>
+</div>
+
+
+<script src="leaflet.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="data/sthlm_tour_line.js"></script>
+<script src="data/sthlm_tour_points.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
